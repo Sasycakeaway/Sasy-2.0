@@ -3,7 +3,7 @@
         <div class="row gx-0">
             <div class="col-lg-4 text-center secondary py-3">
                 <div class="d-inline-flex align-items-center justify-content-center">
-                    <i class="bi bi-envelope fs-1 text-primary me-3"></i>
+                    <i class="bi bi-envelope fs-1 text-first me-3"></i>
                     <div class="text-start">
                         <h6 class="text-uppercase mb-1">Scrivici una email</h6>
                         <span>sasy.vitrani@gmail.com</span>
@@ -19,7 +19,7 @@
             </div>
             <div class="col-lg-4 text-center secondary py-3">
                 <div class="d-inline-flex align-items-center justify-content-center">
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
+                    <i class="bi bi-phone-vibrate fs-1 text-first me-3"></i>
                     <div class="text-start">
                         <h6 class="text-uppercase mb-1">Chiamaci</h6>
                         <span>3339273367</span>
@@ -41,18 +41,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto mx-lg-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">About Us</a>
-                <a href="menu.html" class="nav-item nav-link">Menu & Pricing</a>
-                <a href="team.html" class="nav-item nav-link">Master Chefs</a>
-                <div class="nav-item dropdown">
+                <a href="/" class="nav-item nav-link active">Home</a>
+                <a href="/about" class="nav-item nav-link">Chi sono</a>
+                <!-- <a href="menu.html" class="nav-item nav-link">Menu & Pricing</a>
+                <a href="team.html" class="nav-item nav-link">Master Chefs</a> -->
+                <!-- <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu m-0">
                         <a href="service.html" class="dropdown-item">Our Service</a>
                         <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                     </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                </div> -->
+                <a href="/contattaci" class="nav-item nav-link">Contattaci</a>
             </div>
         </div>
     </nav>

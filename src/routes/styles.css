@@ -19,7 +19,13 @@
 	color: #E88F2A;
 }
 
+.dark {
+    background-color: #2B2825;
+}
 
+.text-sec {
+    color: #FAF3EB;
+}
 .text-column {
 	display: flex;
 	max-width: 48rem;
