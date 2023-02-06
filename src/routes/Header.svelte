@@ -43,6 +43,8 @@
             <div class="navbar-nav ms-auto mx-lg-auto py-0">
                 <a href="/" class="nav-item nav-link active">Home</a>
                 <a href="/about" class="nav-item nav-link">Chi sono</a>
+                <a href="/why" class="nav-item nav-link">Perchè Sasy's</a>
+
                 <!-- <a href="menu.html" class="nav-item nav-link">Menu & Pricing</a>
                 <a href="team.html" class="nav-item nav-link">Master Chefs</a> -->
                 <!-- <div class="nav-item dropdown">

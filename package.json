@@ -28,6 +28,7 @@
 		"prettier-plugin-svelte": "^2.8.1",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
+		"svelte-intersection-observer": "^0.10.0",
 		"tslib": "^2.4.1",
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
@@ -36,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@contentful/rich-text-html-renderer": "^16.0.2",
+		"animate.css": "^4.1.1",
 		"bootstrap": "^5.2.3",
 		"contentful": "^9.3.0",
 		"sass": "^1.58.0"

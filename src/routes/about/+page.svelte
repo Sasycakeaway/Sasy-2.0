@@ -1,26 +1,65 @@
-<svelte:head>
-	<title>About</title>
-	<meta name="description" content="About this app" />
-</svelte:head>
+<script>
+	import client from '$lib/ts/contentful';
+	import { onMount } from 'svelte';
+	import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+	import 'animate.css';
+	import Timeline from '$lib/components/Timeline.svelte';
 
-<div class="text-column">
-	<h1>About this app</h1>
+	let about = [];
 
-	<p>
-		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
-		following into your command line and following the prompts:
-	</p>
+	onMount(async () => {
+		const about_tmp = await client?.getEntries({
+			content_type: 'about'
+		});
 
-	<pre>npm create svelte@latest</pre>
+		about = about_tmp?.items;
+		about = about.sort((a, b) => {
+			if (a.fields.order < b.fields.order) return -1;
+			else if (a.fields.order > b.fields.order) return 1;
+			else return 0;
+		});
+	});
+</script>
 
-	<p>
-		The page you're looking at is purely static HTML, with no client-side interactivity needed.
-		Because of that, we don't need to load any JavaScript. Try viewing the page's source, or opening
-		the devtools network panel and reloading.
-	</p>
-
-	<p>
-		The <a href="/sverdle">Sverdle</a> page illustrates SvelteKit's data loading and form handling. Try
-		using it with JavaScript disabled!
-	</p>
+<div class="container">
+	<div class="timeline">
+		{#each about as timeline}
+			<Timeline 
+				testo={documentToHtmlString(timeline.fields.testo)}
+				image={timeline.fields.image.fields.file.url.replace('//', 'https://')} 
+				description={timeline.fields.timelineDescription}
+			/>
+		{/each}
+	</div>
 </div>
+
+<style>
+	.timeline {
+		position: relative;
+		/* background: #272e48; */
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		padding: 5rem;
+		margin: 0 auto 1rem auto;
+		overflow: hidden;
+	}
+	.timeline:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 50%;
+		margin-left: -2px;
+		border-right: 2px dashed #4b546f;
+		height: 100%;
+		display: block;
+	}
+	@media (max-width: 992px) {
+		.timeline {
+			padding: 15px;
+		}
+		.timeline:after {
+			border: 0;
+		}
+	}
+</style>
