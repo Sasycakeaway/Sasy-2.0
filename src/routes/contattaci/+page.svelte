@@ -1,4 +1,4 @@
-<div class="container-fluid contact position-relative px-5 dark" style="margin-top: 90px;">
+<div class="container-fluid position-relative px-5" style="margin-top: 90px;">
 	<div class="container">
 		<div class="row g-5 mb-5">
 			<div class="col-lg-4 col-md-6">
@@ -30,7 +30,7 @@
 						<div class="col-sm-6">
 							<input
 								type="text"
-								class="form-control bg-light border-0 px-4"
+								class="form-control border-0 px-4"
 								placeholder="Il tuo nome"
 								style="height: 55px;"
 							/>
@@ -38,7 +38,7 @@
 						<div class="col-sm-6">
 							<input
 								type="email"
-								class="form-control bg-light border-0 px-4"
+								class="form-control border-0 px-4"
 								placeholder="La tua email"
 								style="height: 55px;"
 							/>
@@ -46,14 +46,14 @@
 						<div class="col-sm-12">
 							<input
 								type="text"
-								class="form-control bg-light border-0 px-4"
+								class="form-control border-0 px-4"
 								placeholder="Soggetto"
 								style="height: 55px;"
 							/>
 						</div>
 						<div class="col-sm-12">
 							<textarea
-								class="form-control bg-light border-0 px-4 py-3"
+								class="form-control border-0 px-4 py-3"
 								rows="4"
 								placeholder="Messaggio"
 							/>
@@ -70,3 +70,9 @@
 	</div>
 	<br />
 </div>
+
+<style>
+	input, textarea {
+		background-color: #f5ebe0;
+	}
+</style>
