@@ -1,7 +1,7 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 
 :root {
-	--primary: #E88F2A;
+    --primary: #E88F2A;
     --secondary: #FAF3EB;
     --light: #FFFFFF;
     --dark: #2B2825;
@@ -9,14 +9,17 @@
 }
 
 .primary {
-	background-color: #E88F2A;
+    background-color: #E88F2A;
 }
 
 .secondary {
-    background-color: #FAF3EB;;
+    background-color: #FAF3EB;
+    ;
 }
-.text-first {
-	color: #E88F2A;
+
+.text-first,
+a {
+    color: #E88F2A;
 }
 
 .dark {
@@ -26,41 +29,42 @@
 .text-sec {
     color: #FAF3EB;
 }
+
 .text-column {
-	display: flex;
-	max-width: 48rem;
-	flex: 0.6;
-	flex-direction: column;
-	justify-content: center;
-	margin: 0 auto;
+    display: flex;
+    max-width: 48rem;
+    flex: 0.6;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 input,
 button {
-	font-size: inherit;
-	font-family: inherit;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 button:focus:not(:focus-visible) {
-	outline: none;
+    outline: none;
 }
 
 @media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
-	}
+    h1 {
+        font-size: 2.4rem;
+    }
 }
 
 .visually-hidden {
-	border: 0;
-	clip: rect(0 0 0 0);
-	height: auto;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: auto;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
 }
 
 /********** Template CSS **********/
@@ -170,14 +174,9 @@ h6,
 }
 
 @media (max-width: 991.98px) {
-    .navbar-dark .navbar-nav .nav-link  {
+    .navbar-dark .navbar-nav .nav-link {
         padding: 10px 0;
     }
-}
-
-.hero-header {
-    background: url(../img/hero.jpg) top right no-repeat;
-    background-size: cover;
 }
 
 .btn-play {

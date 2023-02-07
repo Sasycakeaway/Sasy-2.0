@@ -16,6 +16,13 @@
 		});
 		prodotti_type = prodotti_types_raw?.items;
 		prodotti = prodotti_raw?.items;
+		prodotti_type = prodotti_type.sort((a, b) => {
+			if(a.fields.id < b.fields.id)
+				return -1;
+			else if(a.fields.id > b.fields.id)
+				return 1;
+			else return 0;
+		})
 		$product_types = prodotti_type;
 	});
 </script>
