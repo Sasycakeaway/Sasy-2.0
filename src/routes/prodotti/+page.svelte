@@ -98,11 +98,13 @@
 			<div class="pure-g">
 				{#each prodotti as prod}
 					<div class="pure-u-1-3">
-						<CardProdotti
-							tipologia={prod.fields.nome}
-							img={prod.fields.foto.fields.file.url.replace('//', 'https://')}
-							testo={prod.fields.descrizioneBreve}
-						/>
+						<a href="/prodotto?prod={prod.fields.nome}">
+							<CardProdotti
+								tipologia={prod.fields.nome}
+								img={prod.fields.foto.fields.file.url.replace('//', 'https://')}
+								testo={prod.fields.descrizioneBreve}
+							/>
+						</a>
 					</div>
 				{/each}
 			</div>
