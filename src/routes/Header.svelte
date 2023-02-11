@@ -79,6 +79,7 @@
 			</div>
 			<a href="/contattaci" class="nav-item nav-link">Contattaci</a>
 			<a href="/login" class="nav-item nav-link">Login</a>
+			<a href="/carrello" class="nav-item nav-link">Carrello</a>
 		</div>
 	</div>
 </nav>

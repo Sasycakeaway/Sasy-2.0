@@ -22,3 +22,6 @@ declare interface ProductType {
         }
     }
 }
+// declare interface Carrello {
+//     [item_name]: string
+// }
