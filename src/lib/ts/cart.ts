@@ -32,7 +32,7 @@ export function add_new_item(cart: any, item_name: string | null, qty: number){
 };
 
 export const update_cart = (cart: object) => {
-    sessionStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
 };
 
 export const is_the_last_element = (qty: number) => qty == 1;

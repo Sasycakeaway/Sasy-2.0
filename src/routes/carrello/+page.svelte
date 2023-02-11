@@ -20,6 +20,8 @@
 			const prod = filter_prod(product);
 			totale += prod[0].fields.price * carrello[product]; // Prezzo * quantità
 		});
+
+		localStorage.setItem("totale", totale.toString());
 	}
 
 	function get_product_price(product) {
@@ -28,15 +30,15 @@
 	}
 
 	onMount(async () => {
-		// const auth = getAuth($firebase);
-		// onAuthStateChanged(auth, (user) => {
-		// 	if (!user) {
-		// 		location.href = '/login'; // The user must be logged in to access cart
-		// 	}
-		// 	user_logged = user;
-		// });
+		const auth = getAuth($firebase);
+		onAuthStateChanged(auth, (user) => {
+			if (!user) {
+				location.href = '/login'; // The user must be logged in to access cart
+			}
+			user_logged = user;
+		});
 
-		let cart_tmp = sessionStorage.getItem('cart');
+		let cart_tmp = localStorage.getItem('cart');
 		if (cart_tmp) carrello = JSON.parse(cart_tmp);
 
 		prodotti_cms = await client?.getEntries({
@@ -124,10 +126,12 @@
 								<span><strong>{totale} &euro;</strong></span>
 							</li>
 						</ul>
+						<a href="carrello/pagamenti">
+							<button type="button" class="btn primary btn-lg btn-block text-white">
+								Vai al pagamento
+							</button>
+						</a>
 
-						<button type="button" class="btn primary btn-lg btn-block text-white">
-							Vai al pagamento
-						</button>
 					</div>
 				</div>
 			</div>

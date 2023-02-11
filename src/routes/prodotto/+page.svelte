@@ -33,7 +33,7 @@
 			return a.fields.nome == prod;
 		})[0];
 
-		const tmp_cart = sessionStorage.getItem('cart');
+		const tmp_cart = localStorage.getItem('cart');
 		if (tmp_cart) cart = JSON.parse(tmp_cart);
 	});
 

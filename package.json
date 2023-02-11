@@ -39,6 +39,7 @@
 	"dependencies": {
 		"@contentful/rich-text-html-renderer": "^16.0.2",
 		"@contentful/rich-text-types": "^16.0.2",
+		"@paypal/paypal-js": "^5.1.4",
 		"animate.css": "^4.1.1",
 		"bootstrap": "^5.2.3",
 		"contentful": "^9.3.0",

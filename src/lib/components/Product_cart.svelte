@@ -8,13 +8,13 @@
 
     function plus() {
 		qty++;
-		const cart = JSON.parse(sessionStorage.getItem('cart'));
+		const cart = JSON.parse(localStorage.getItem('cart'));
 		cart[product_name] = qty;
 		update_cart(cart);
 	}
 
 	function minus() {
-		const cart = JSON.parse(sessionStorage.getItem('cart'));
+		const cart = JSON.parse(localStorage.getItem('cart'));
 		if (is_the_last_element(cart[product_name]))
 			dialogs.confirm("Vuoi eliminare l'elemento?").then((response) => {
 				if (response) delete_product(cart, product_name);
@@ -28,7 +28,7 @@
 	}
 
     function delete_product_from_cart() {
-        const cart = JSON.parse(sessionStorage.getItem('cart'));
+        const cart = JSON.parse(localStorage.getItem('cart'));
         delete_product(cart, product_name);
         update_cart(cart);
         location.reload();  // Ricarica la pagina per triggerare il reload del carrello
