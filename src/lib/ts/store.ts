@@ -14,3 +14,7 @@ export const product_types = writable([{    // Dummy product type structure
 }]);
 
 export const is_types_loaded = writable(false);
+
+export const firebase = writable();
+
+export const firebase_loaded = writable(false);

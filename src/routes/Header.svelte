@@ -78,6 +78,7 @@
 				</div>
 			</div>
 			<a href="/contattaci" class="nav-item nav-link">Contattaci</a>
+			<a href="/login" class="nav-item nav-link">Login</a>
 		</div>
 	</div>
 </nav>
