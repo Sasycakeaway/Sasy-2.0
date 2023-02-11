@@ -8,31 +8,53 @@
 
 	let cart = {},
 		totale = 0;
-	
-        let paypal, button;
 
-    let indirizzo = "", domicilio = false, email = "";
+	let paypal, button;
 
-    async function send_order_to_db() {
-        const db = getFirestore($firebase);
-        await addDoc(collection(db, "orders"), {
-            cart: cart,
-            domicilio: domicilio,
-            email: email,
-            indirizzo_consegna: indirizzo,
-            timestamp: new Date()
-        });
-    }
+	let indirizzo = '',
+		domicilio = false,
+		email = '';
+
+	function generateUUID() {
+		// Public Domain/MIT
+		var d = new Date().getTime(); //Timestamp
+		var d2 =
+			(typeof performance !== 'undefined' && performance.now && performance.now() * 1000) || 0; //Time in microseconds since page-load or 0 if unsupported
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+			var r = Math.random() * 16; //random number between 0 and 16
+			if (d > 0) {
+				//Use timestamp until depleted
+				r = (d + r) % 16 | 0;
+				d = Math.floor(d / 16);
+			} else {
+				//Use microseconds since page-load if supported
+				r = (d2 + r) % 16 | 0;
+				d2 = Math.floor(d2 / 16);
+			}
+			return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+		});
+	}
+
+	async function send_order_to_db() {
+		const db = getFirestore($firebase);
+		await addDoc(collection(db, 'orders'), {
+			cart: cart,
+			domicilio: domicilio,
+			email: email,
+			indirizzo_consegna: indirizzo,
+			timestamp: new Date(),
+			id: generateUUID()
+		});
+	}
 
 	onMount(async () => {
 		const auth = getAuth($firebase);
 		onAuthStateChanged(auth, (user) => {
 			if (!user) {
 				location.href = '/login'; // The user must be logged in to access cart
-			}else {
-                if(user.email)
-                    email = user.email;
-            }
+			} else {
+				if (user.email) email = user.email;
+			}
 		});
 		const cart_tmp = localStorage.getItem('cart');
 		if (cart_tmp) cart = JSON.parse(cart_tmp);
@@ -61,40 +83,37 @@
 
 		if (paypal) {
 			try {
-				button = await paypal
-					.Buttons({
-						createOrder: function (data, actions) {
-							// Set up the transaction
-							return actions.order.create({
-								purchase_units: [
-									{
-										amount: {
-											value: totale
-										}
+				button = await paypal.Buttons({
+					createOrder: function (data, actions) {
+						// Set up the transaction
+						return actions.order.create({
+							purchase_units: [
+								{
+									amount: {
+										value: totale
 									}
-								]
-							});
-						},
-                        onApprove: async function () {
-                            await send_order_to_db();
-                            location.href = "/carrello/pagamenti/complete"
-                        },
-                        onError: function (error) {
-                            dialogs.alert("Errore durante il pagamento");
-                        }
-					});
+								}
+							]
+						});
+					},
+					onApprove: async function () {
+						await send_order_to_db();
+						location.href = '/carrello/pagamenti/complete';
+					},
+					onError: function (error) {
+						dialogs.alert('Errore durante il pagamento');
+					}
+				});
 			} catch (error) {
-				console.error('failed to render the PayPal Buttons', error);
+				dialogs.alert('Errore durante il caricamento di paypal');
 			}
 		}
 	});
 
-    function pay() {
-        if(indirizzo != "") 
-            button.render("#paypal_btn");
-        else
-            dialogs.alert("Inserisci un indirizzo valido");
-    }
+	function pay() {
+		if (indirizzo != '') button.render('#paypal_btn');
+		else dialogs.alert('Inserisci un indirizzo valido');
+	}
 </script>
 
 <svelte:head>

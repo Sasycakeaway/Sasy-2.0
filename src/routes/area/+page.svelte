@@ -2,9 +2,8 @@
 	import DeleteUser from '$lib/components/DeleteUser.svelte';
 	import { firebase, firebase_loaded } from '$lib/ts/store';
 	import { load_user_data } from '$lib/ts/user';
-	import { getAuth, type Auth, deleteUser } from 'firebase/auth';
-	import { Firestore, getFirestore, query, where } from 'firebase/firestore';
-	import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
+	import { getAuth, type Auth } from 'firebase/auth';
+	import { Firestore, getFirestore } from 'firebase/firestore';
 	import { dialogs } from 'svelte-dialogs';
 
 	let auth: Auth;
@@ -16,14 +15,6 @@
 		Telefono: 0,
 		CF: ''
 	};
-
-	// async function load_user_data() {
-	// 	const q = query(collection(db, 'users_data'), where('Email', '==', auth.currentUser?.email));
-	// 	const querySnapshot = await getDocs(q);
-	// 	querySnapshot.forEach((doc) => {
-	// 		user = doc.data();
-	// 	});
-	// }
 
 	async function load_firebase() {
 		// @ts-ignore
@@ -53,10 +44,9 @@
 </script>
 
 {#if $firebase_loaded}
-<div style="visibility: hidden;">
-	{load_firebase()}
-
-</div>
+	<div style="visibility: hidden;">
+		{load_firebase()}
+	</div>
 
 	<div class="container py-5">
 		<div class="row">
@@ -124,11 +114,13 @@
 			</div>
 			<div class="col-lg-3">
 				<div class="card mb-4">
-					<div class="card-body text-center">
-						<img src="https://img.icons8.com/color/96/null/cardboard-box.png" />
-						<h5 class="my-3">I miei ordini</h5>
-						<p>Controlla qui i tuoi ordini effettuati</p>
-					</div>
+					<a href="/area/my_order">
+						<div class="card-body text-center">
+							<img src="https://img.icons8.com/color/96/null/cardboard-box.png" alt="order_logo" />
+							<h5 class="my-3">I miei ordini</h5>
+							<p>Controlla qui i tuoi ordini effettuati</p>
+						</div>
+					</a>
 				</div>
 			</div>
 		</div>
