@@ -3,6 +3,7 @@
 	import client from '$lib/ts/contentful';
 	import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 	import { add_new_item, update_cart } from '$lib/ts/cart';
+	import { is_mobile } from '$lib/ts/utils';
 
 	let prodotti = {
 		fields: {
@@ -21,7 +22,10 @@
 	let qty_prod = 0;
 	let cart = {};
 	let prod: string | null;
+	let mobile = false;
+
 	onMount(async () => {
+		mobile = is_mobile();
 		const url = new URL(window.location.href);
 		prod = url.searchParams.get('prod');
 

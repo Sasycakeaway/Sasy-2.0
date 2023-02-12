@@ -7,6 +7,5 @@ export async function load_user_data(db: Firestore, email: string) {
     querySnapshot.forEach((doc) =>{
         document = doc.data();
     });
-    console.log(document);
     return document;
 }

@@ -98,6 +98,7 @@
 					},
 					onApprove: async function () {
 						await send_order_to_db();
+						localStorage.removeItem("cart");	// Remove old cart
 						location.href = '/carrello/pagamenti/complete';
 					},
 					onError: function (error) {

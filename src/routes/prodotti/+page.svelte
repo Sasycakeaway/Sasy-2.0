@@ -6,6 +6,7 @@
 	import { is_types_loaded, product_types } from '$lib/ts/store';
 	import Loader from '$lib/components/Loader.svelte';
 	import CardProdotti from '$lib/components/Card_Prodotti.svelte';
+	import { is_mobile } from '$lib/ts/utils';
 
 	let prodotti = [],
 		type = '';
@@ -13,6 +14,7 @@
 		descrizione = '',
 		slide = [];
 	let loading = true;
+	let mobile = false;
 	let product_type = [
 		{
 			// Dummy structure for banner
@@ -25,6 +27,7 @@
 	];
 
 	onMount(async () => {
+		mobile = is_mobile();
 		const url = new URL(window.location.href);
 		type = url.searchParams.get('type');
 		if (type != 'Lievitati') {
@@ -36,8 +39,6 @@
 				if (a.fields.tipologia == type) return true;
 				else return false;
 			});
-
-			console.log(prodotti);
 		} else {
 			let prodotti_raw = await client?.getEntries({
 				content_type: 'specialPage'
@@ -94,21 +95,39 @@
 	/>
 
 	{#if type != 'Lievitati'}
-		<center>
-			<div class="pure-g">
-				{#each prodotti as prod}
-					<div class="pure-u-1-3">
-						<a href="/prodotto?prod={prod.fields.nome}">
-							<CardProdotti
-								tipologia={prod.fields.nome}
-								img={prod.fields.foto.fields.file.url.replace('//', 'https://')}
-								testo={prod.fields.descrizioneBreve}
-							/>
-						</a>
-					</div>
-				{/each}
-			</div>
-		</center>
+		{#if mobile}
+			<center>
+				<div class="pure-g">
+					{#each prodotti as prod}
+						<div class="pure-u-1-1">
+							<a href="/prodotto?prod={prod.fields.nome}">
+								<CardProdotti
+									tipologia={prod.fields.nome}
+									img={prod.fields.foto.fields.file.url.replace('//', 'https://')}
+									testo={prod.fields.descrizioneBreve}
+								/>
+							</a>
+						</div>
+					{/each}
+				</div>
+			</center>
+		{:else}
+			<center>
+				<div class="pure-g">
+					{#each prodotti as prod}
+						<div class="pure-u-1-3">
+							<a href="/prodotto?prod={prod.fields.nome}">
+								<CardProdotti
+									tipologia={prod.fields.nome}
+									img={prod.fields.foto.fields.file.url.replace('//', 'https://')}
+									testo={prod.fields.descrizioneBreve}
+								/>
+							</a>
+						</div>
+					{/each}
+				</div>
+			</center>
+		{/if}
 	{:else}
 		<div class="container">
 			<h1 class="text-center">{title}</h1>
